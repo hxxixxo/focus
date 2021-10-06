@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>당신의 집중력</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+	<style type="text/css">
+		html{font-family: 'Nanum Myeongjo', serif;}
+		div{width: 1300px;
+			line-height: 200px;
+			font-size: 150px;
+			position: absolute;
+			left: 10%;
+			top: 20px;}
+			h1{font-size: 100px;
+				position: absolute;
+				left: 37%;
+				top: 36%;}
+
+		body{background-image:url(focus.png);
+		background-repeat:no-repeat;
+		background-size:cover;
+		hight:100%;
+	}
+	</style>
+
+	<div>"당신의 집중력은?"</div>
+
+	<img id="cat" src="cat.gif">
+	<style type="text/css">
+		#cat{width: 300px;
+			position: absolute;
+			left: 40%;
+			bottom: 8%;
+		}
+		
+	</style>
+	<h1><time>00:00:00</time></h1>
+
+	<img id="pl" src="pl.png">
+	<img id="pa" src="pa.png">
+	<img id="cl" src="cl.png">
+	<img id="so" src="so.png">
+	<audio id="fa" src="fast.mp3">
+	<style type="text/css">
+		#pl{width: 20px;
+			position: absolute;
+			left: 44%;
+			top: 40%;}
+		#pa{width: 20px;
+			position: absolute;
+			left: 49%;
+			top: 40%;}
+		#cl{width: 20px;
+			position: absolute;
+			left: 54%;
+			top: 40%;}
+		#so{width: 30px;
+			position: absolute;
+			left: 49%;
+			bottom: 3%;
+		}
+		
+		
+
+	</style>
+
+	<script type="text/javascript">
+	alert('집 중 하 세 요 !')
+	var h1 = document.getElementsByTagName('h1')[0],
+    seconds = 0, minutes = 0, hours = 0,
+    t;
+
+	function add() {
+    seconds++;
+    if (seconds >= 60) {
+        seconds = 0;
+        minutes++;
+        if (minutes >= 60) {
+            minutes = 0;
+            hours++;
+        }
+    }
+    
+    h1.textContent = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
+
+    timer();
+}
+	function timer() {
+    t = setTimeout(add, 1000);
+}
+	timer();
+
+
+/* Start button */
+pl.onclick = timer;
+
+/* Stop button */
+pa.onclick = function() {
+    clearTimeout(t);
+}
+
+/* Clear button */
+cl.onclick = function() {
+    h1.textContent = "00:00:00";
+    seconds = 0; minutes = 0; hours = 0;
+}	
+
+	var state = false;
+	so.onclick=function(){
+		if(!state){
+			so.src="sf.png"
+			fa.play();
+			state=true;
+		}
+		else{
+			so.src="so.png"
+			fa.pause();
+			state=false;
+		}
+	}
+</script>
+
+
+</body>
+</html>
